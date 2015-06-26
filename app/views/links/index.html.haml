@@ -1,0 +1,15 @@
+%h3 #{current_user.links.count} links
+
+- if @tag
+  %h1 
+    TAG: #{@tag.name}
+
+= render @links
+
+.pager
+  = link_to "< < prev", "?page=#{current_page(-1)}"
+  = link_to "next > >", "?page=#{current_page(+1)}"
+
+.search
+  %form{method: "get"}
+    = text_field_tag "search", @query, placeholder: "Search"
